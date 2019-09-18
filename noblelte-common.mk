@@ -274,6 +274,11 @@ PRODUCT_PACKAGES += \
 # Properties
 TARGET_SYSTEM_PROP += device/samsung/noblelte-common/system.prop
 
+# APN Definitions - override incomplete/broken lineageos version with Samsung version
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/telephony/apns-conf.xml:system/etc/apns-conf.xml \
+    $(LOCAL_PATH)/configs/telephony/spn-conf.xml:system/etc/spn-conf.xml
+
 # Ramdisk
 PRODUCT_PACKAGES += \
     fstab.samsungexynos7420 \
