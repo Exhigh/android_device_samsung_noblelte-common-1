@@ -274,6 +274,11 @@ PRODUCT_PACKAGES += \
 # Properties
 TARGET_SYSTEM_PROP += device/samsung/noblelte-common/system.prop
 
+# APN Definitions - override incomplete/broken lineageos version with Samsung version
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/telephony/apns-conf.xml:system/etc/apns-conf.xml \
+    $(LOCAL_PATH)/configs/telephony/spn-conf.xml:system/etc/spn-conf.xml
+
 # Ramdisk
 PRODUCT_PACKAGES += \
     fstab.samsungexynos7420 \
@@ -378,6 +383,12 @@ PRODUCT_PACKAGES += \
     wpa_supplicant.conf \
     android.hardware.wifi@1.0-impl \
     android.hardware.wifi@1.0-service
+	
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/wifi/wpa_supplicant_overlay.conf:system/vendor/etc/wifi/wpa_supplicant_overlay.conf \
+	$(LOCAL_PATH)/configs/wifi/p2p_supplicant_overlay.conf:system/vendor/etc/wifi/p2p_supplicant_overlay.conf \
+	$(LOCAL_PATH)/configs/wifi/filter_ie:system/vendor/etc/wifi/filter_ie
+	
 
 # call Samsung LSI board support package
 $(call inherit-product, hardware/samsung_slsi-cm/exynos5/exynos5.mk)
